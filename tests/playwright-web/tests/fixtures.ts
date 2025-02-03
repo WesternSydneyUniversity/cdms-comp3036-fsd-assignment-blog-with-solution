@@ -1,18 +1,11 @@
 import "dotenv/config";
-console.log(process.env.SUPER_PASSWORD);
 
-import { test as base, type BrowserContext, type Page } from "@playwright/test";
-
-export const e2epassword = "superpassword";
+import { type BrowserContext } from "@playwright/test";
 
 // TODO: Implement seed
-export async function seedData(...options: any[]) {}
-
-// Declare the types of your fixtures.
-type MyFixtures = {
-  adminPage: Page;
-  userPage: Page;
-};
+export async function seedData(...options: any[]) {
+  /* After assignment two, move the hard coded data to the seed */
+}
 
 type AppOptions = {};
 
@@ -34,21 +27,3 @@ export async function setOptions(
 }
 
 export * from "@playwright/test";
-export const test = base.extend<MyFixtures>({
-  adminPage: async ({ browser }, use) => {
-    const context = await browser.newContext({
-      storageState: ".auth/admin.json",
-    });
-    const adminPage = await context.newPage(); //  new AdminPage(await context.newPage());
-    await use(adminPage);
-    await context.close();
-  },
-  userPage: async ({ browser }, use) => {
-    const context = await browser.newContext({
-      storageState: ".auth/user.json",
-    });
-    const userPage = await context.newPage(); //  new UserPage(await context.newPage());
-    await use(userPage);
-    await context.close();
-  },
-});

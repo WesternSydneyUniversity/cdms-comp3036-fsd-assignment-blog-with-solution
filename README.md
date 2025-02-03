@@ -1,84 +1,116 @@
-# Turborepo starter
+# Assignment 2 - Blog - Client App
 
-This Turborepo starter is maintained by the Turborepo core team.
+The goal of this assignment is to implement all the client side functionality.
+Example implementation is in the image below.
 
-## Using this example
+## Success Criteria
 
-Run the following command:
+- ✅ All of the tests must be passing
+- ✅ You must be able to explain any code in the codebase
 
-```sh
-npx create-turbo@latest
-```
+### Requirements
 
-## What's inside?
+1. User must see the list of blog post categories, where each category points to UI showing only posts of that category
+1. User must see the list of blog post tags, where each tag points to UI showing only posts of that category
+1. User must see the history of blog posts, showing month and year, where each moth, year tuple points to UI showing only posts of that category
+1. The list shows the following items:
+   - blog title, pointing to detail page
+   - short description
+   - date
+   - image
+   - tags
+   - likes
+   - views
+1. Detail page shows the same items as list item, but the short description is replaced by formatted long description
+1. Detail text is stored as Markdown, which needs to be converted to HTML
+1. There is a search functionality that filters blogs based on string found in title or description
 
-This Turborepo includes the following packages/apps:
+## Prerequisites
 
-### Apps and Packages
+First, make sure that "pnpm" and "turbo" is installed in your computer. If not, please follow installation instructions for pnpm. If turbo is not installed, please install it using pnpm with the following command:
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+Then, run the following command to install turborepo.
 
 ```
-cd my-turborepo
-pnpm build
+pnpm add -g turbo
 ```
 
-### Develop
+## Installing the project
 
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+Once the pnpm is installed, in the root of the project install the packages
 
 ```
-cd my-turborepo
-npx turbo login
+pnpm i
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+To run end to end tests you need to install headless browsers. Please run the following command in the `tests/playwright-web` directory
 
 ```
-npx turbo link
+pnpx playwright install
 ```
 
-## Useful Links
+## Running the project
 
-Learn more about the power of Turborepo:
+To run the project, run the following command in the root directory of your project:
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+```
+turbo dev
+```
+
+This will run:
+
+- Client application at [http://localhost:3001](http://localhost:3001)
+- Admin application at [http://localhost:3002](http://localhost:3002)
+
+## Running tests
+
+To run the tests please run the following command in the root project
+
+```
+turbo test
+```
+
+If you with to run the end to end tests in the visual UI, please run the following command in the `tests/playwright-web` directory:
+
+```
+pnpm ui
+```
+
+or
+
+```
+pnpm playwright test --ui
+```
+
+## Project structure
+
+The project is monorepo with the following packages split into three categories:
+
+**Applications**
+
+Contains the following web applications:
+
+- **apps/admin** - Admin Website
+- **apps/web** - Client website
+
+**Packages**
+
+Contains the following packages with shared code and configurations:
+
+- **packages/ui** - Library of UI elements shared between admin and client
+- **packages/utils** - Library of utility functions shared between other projects
+- **packages/eslint-config**, **packages/tailwind-config** and **packages/typescript-config** contain configuration files for build pipelines for this project
+
+**Tests**
+
+Contains the following test applications:
+
+- **tests/playwright-admin** - End to End tests for the admin application
+- **tests/playwright-web** - End to End tests for the client application
+- **tests/storybook** - Configured storybook instance for development and testing of React components in isolation
+
+## Application Structure
+
+The client application comes with pre-defined router (only one route is missing for your learning).
+The client application also comes with pre defined structure of components and utilities for you to complete.
+Tha admin application is much more bare with most functionality AND structure needed to be completed by you.

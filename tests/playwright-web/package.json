@@ -1,10 +1,15 @@
 {
-  "name": "playwright",
+  "name": "@repo/playwright-web",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "next start",
+    "start:e2e": "cross-env E2E=yes next start",
     "start:web": "pnpm --filter web start:e2e",
-    "test": "pnpm playwright test"
+    "test-1": "pnpm playwright test --grep \"@a1\"",
+    "test-2": "pnpm playwright test --grep \"@a2-2\"",
+    "test-3": "pnpm playwright test --grep \"@a2-3\"",
+    "ui": "pnpm playwright test --ui"
   },
   "keywords": [],
   "author": "",

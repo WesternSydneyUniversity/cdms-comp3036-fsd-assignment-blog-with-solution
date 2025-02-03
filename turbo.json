@@ -16,6 +16,18 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "test": {
+      "dependsOn": ["check-types"]
+    },
+    "test-1": {
+      "dependsOn": ["^test"]
+    },
+    "test-2": {
+      "dependsOn": ["test"]
+    },
+    "test-3": {
+      "dependsOn": ["test"]
     }
   },
   "envMode": "loose"
