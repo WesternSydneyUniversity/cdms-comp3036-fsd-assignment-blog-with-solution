@@ -15,7 +15,8 @@
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
-    "test": "vitest"
+    "test": "vitest --browser.headless",
+    "dev:test": "vitest"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",

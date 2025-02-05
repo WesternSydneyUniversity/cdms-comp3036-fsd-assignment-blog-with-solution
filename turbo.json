@@ -21,12 +21,21 @@
       "dependsOn": ["check-types"]
     },
     "test-1": {
-      "dependsOn": ["^test"]
+      "dependsOn": ["test"]
+    },
+    "dev:test-1": {
+      "dependsOn": ["test"]
     },
     "test-2": {
       "dependsOn": ["test"]
     },
+    "dev:test-2": {
+      "dependsOn": ["test"]
+    },
     "test-3": {
+      "dependsOn": ["test"]
+    },
+    "dev:test-3": {
       "dependsOn": ["test"]
     }
   },

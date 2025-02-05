@@ -10,7 +10,8 @@
     "start": "next start",
     "lint": "next lint --max-warnings 0",
     "check-types": "tsc --noEmit",
-    "test": "vitest"
+    "test": "vitest --browser.headless",
+    "dev:test": "vitest"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
