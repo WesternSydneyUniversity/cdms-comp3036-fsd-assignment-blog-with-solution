@@ -20,23 +20,29 @@
     "test": {
       "dependsOn": ["check-types"]
     },
+    "dev:test": {
+      "dependsOn": ["check-types"]
+    },
     "test-1": {
       "dependsOn": ["test"]
     },
     "dev:test-1": {
-      "dependsOn": ["test"]
+      "dependsOn": ["dev:test"]
     },
     "test-2": {
       "dependsOn": ["test"]
     },
     "dev:test-2": {
-      "dependsOn": ["test"]
+      "dependsOn": ["dev:test"]
     },
     "test-3": {
       "dependsOn": ["test"]
     },
     "dev:test-3": {
-      "dependsOn": ["test"]
+      "dependsOn": ["dev:test"]
+    },
+    "all:test": {
+      "dependsOn": ["test-1", "test-2", "test-3"]
     }
   },
   "envMode": "loose"
