@@ -31,39 +31,47 @@ Example implementation is in the image below.
 
 > 💡Idea! Create a new issue in your repository, where you can track the completion of these items. Just copy paste them into the issue and mark them as complete as you go. Make sure you copy the source from README.md not the preview text.
 
-#### LAYOUT
+#### HOME SCREEN
 
-1. [ ] Application should look same as the user application, with filters on the left, search bar on the top and main area on the right
-1. [ ] Similar to the client app user should be able to filter and search all posts
+1. [ ] Shows Login screen if not logged
+2. [ ] Shows List screen if logged
+
+#### LOGIN SCREEN
+
+1. [ ] Authentication can work by just providing a password without a user name since a single user operates this.
+1. [ ] Authenticate the current the client using a hard-coded password and use a cookie to remember the signed-in the state.
 
 #### LIST SCREEN
 
-1. [ ] UI is only accessible to logged in user.
-1. [ ] Authentication can work by just providing password without user name since this is operated by a single user.
-1. [ ] Authenticate currently on client using hard coded password and use a cookie to remember signed in state.
-1. [ ] Authenticated page displays the list of posts
+1. [ ] UI is only accessible to logged-in users.
+1. [ ] On the top is a filter screen that allows to filter posts by:
+   1. [ ] Title or content
+   1. [ ] Tags
+   1. [ ] Date
+   1. [ ] Visibility
+1. [ ] Below the filter, it displays the list of posts
    1. [ ] The list post item displays the image, title of the post and metadata
-   1. [ ] The metadata are: category, tags and "active" status.
-   1. [ ] The active status is a button that on click just displays message for now
+   1. [ ] The metadata are category, tags and "active" status.
+   1. [ ] The active status is a button that on click, just displays a message for now
 1. [ ] Clicking on the title takes the user to the MODIFY SCREEN, allowing user to modify the current post
 1. [ ] Above the post list is a search bar allowing to filter the posts
-1. [ ] Next to the search bar is a button to create a new posts
-1. [ ] Click ing on the Create post button takes the user to the
+1. [ ] Next to the search bar is a button to create new posts
+1. [ ] Clicking on the Create post button takes the user to the
 
 #### CREATE and UPDATE screen
 
-Both create and update screen display the same UI, but the update screen preloads the data into fields.
+Both create and update screens display the same UI, but the update screen preloads the data into fields.
 
-1. [ ] There must be following fields, which must be validated for errors:
+1. [ ] There must be the following fields which must be validated for errors:
    1. [ ] Title (input, string)
    1. [ ] Description (textarea, string, max 200 characters)
    1. [ ] Content (textarea, markdown string)
-   1. [ ] Tag List (input, string), shows comma separated list of tags.
+   1. [ ] Tag List (input, string) shows a comma-separated list of tags.
    1. [ ] Image URL (input, string)
-1. [ ] Under the Description is a "Preview" button that replaces the text area with rendered markdown string and changes the title to "Close Preview".
-1. [ ] Under the image input is image preview.
-1. [ ] When preview is closed the cursor must be on the same position as before opening the preview.
-1. [ ] Below the UI is a "Save" button that display an error ui if one of the fields is not specified or valid.
+1. [ ] Under the Description is a "Preview" button that replaces the text area with a rendered markdown string and changes the title to "Close Preview".
+1. [ ] Under the image input is an image preview.
+1. [ ] When the preview is closed, the cursor must be in the same position as before opening the preview.
+1. [ ] Below the UI is a "Save" button that displays an error ui if one of the fields is not specified or valid.
 
 ## Prerequisites
 
