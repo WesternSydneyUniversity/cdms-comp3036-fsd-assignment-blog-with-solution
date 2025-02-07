@@ -9,9 +9,9 @@ export const Button = ({ children, className, ...props }: ButtonProps) => {
     <button
       type="button"
       className={cx(
+        "cursor-pointer rounded bg-white px-3 py-2 font-semibold text-gray-900 hover:bg-gray-50",
+        "bg-white/10 hover:text-gray-900 hover:ring-1 dark:text-white dark:hover:bg-white/20",
         className,
-        "cursor-pointer rounded bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50",
-        "bg-white/10 dark:text-white dark:shadow-sm dark:ring-white/5 dark:hover:bg-white/20",
       )}
       {...props}
     >

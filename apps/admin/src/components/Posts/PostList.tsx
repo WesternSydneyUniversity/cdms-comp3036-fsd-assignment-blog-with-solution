@@ -6,7 +6,7 @@ export function PostList({ posts }: { posts: Post[] }) {
   return (
     <div className="space-y-4">
       {posts.map((post) => (
-        <div
+        <article
           key={post.id}
           className="flex gap-4 rounded-lg border border-white/10 p-4"
         >
@@ -22,13 +22,13 @@ export function PostList({ posts }: { posts: Post[] }) {
             </Link>
             <div className="mt-2 text-gray-600">
               <p>
-                Created:{" "}
+                Posted on{" "}
                 {new Date(post.date).toLocaleDateString("en-US", {
                   day: "2-digit",
                   month: "short",
                   year: "numeric",
                 })}{" "}
-                &middot; Category: {post.category}
+                &middot; {post.category}
               </p>
               <p>#{post.tags.join(", #")}</p>
             </div>
@@ -47,7 +47,7 @@ export function PostList({ posts }: { posts: Post[] }) {
               {post.active ? "Active" : "Inactive"}
             </button>
           </div>
-        </div>
+        </article>
       ))}
     </div>
   );

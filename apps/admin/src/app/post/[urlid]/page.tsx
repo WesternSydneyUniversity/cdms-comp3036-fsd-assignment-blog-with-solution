@@ -10,7 +10,7 @@ type Props = Omit<ImageProps, "src"> & {
   srcDark: string;
 };
 
-export default async function Home({
+export default async function Page({
   params,
 }: {
   params: Promise<{ urlid: string }>;

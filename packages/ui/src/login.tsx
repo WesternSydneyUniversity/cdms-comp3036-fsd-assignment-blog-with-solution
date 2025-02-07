@@ -11,7 +11,9 @@ export function LoginScreen() {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <div className="flex items-center justify-center gap-8">
             <img alt="Full Stack Blog" src="/wsulogo.png" className="h-10" />
-            <div className="text-3xl font-bold">Full Stack Blog</div>
+            <div className="text-primary text-3xl font-bold">
+              Full Stack Blog
+            </div>
           </div>
           <h2 className="text-primary mt-2 text-center text-lg/9 font-bold tracking-tight">
             Sign in to your account
@@ -54,7 +56,7 @@ export function LoginScreen() {
                   type="password"
                   required
                   autoComplete="current-password"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2"
                 />
               </div>
             </div>
@@ -62,9 +64,9 @@ export function LoginScreen() {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="bg-wsu hover:wsu-light focus-visible:outline-wsu flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2"
               >
-                Sign in
+                Sign In
               </button>
             </div>
           </form>
