@@ -4,7 +4,19 @@ test.beforeAll(async () => {
   await seedData();
 });
 
-test.describe("LIST SCREEN", () => {
+test.describe("ADMIN LIST SCREEN", () => {
+  test(
+    "Show all posts",
+    {
+      tag: "@a2",
+    },
+    async ({ userPage }) => {
+      await userPage.goto("/");
+
+      await expect(await userPage.locator("article").count()).toBe(4);
+    },
+  );
+
   test(
     "Filter by content",
     {

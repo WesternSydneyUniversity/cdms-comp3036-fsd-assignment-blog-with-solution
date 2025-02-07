@@ -4,7 +4,7 @@ test.beforeAll(async () => {
   await seedData();
 });
 
-test.describe("UPDATE SCREEN", () => {
+test.describe("ADMIN UPDATE SCREEN", () => {
   test(
     "Authorisation",
     {

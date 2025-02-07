@@ -23,6 +23,18 @@ test.describe("HOME SCREEN", () => {
   }
 
   test(
+    "Show Active Posts",
+    {
+      tag: "@a1",
+    },
+    async ({ page }) => {
+      await page.goto("/");
+
+      await expect(await page.locator("article").count()).toBe(3);
+    },
+  );
+
+  test(
     "Category Links",
     {
       tag: "@a1",

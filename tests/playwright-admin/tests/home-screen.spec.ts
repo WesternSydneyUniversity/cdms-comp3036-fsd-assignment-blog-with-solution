@@ -4,7 +4,7 @@ test.beforeAll(async () => {
   await seedData();
 });
 
-test.describe("HOME SCREEN", () => {
+test.describe("ADMIN HOME SCREEN", () => {
   test(
     "Shows login screen",
     {

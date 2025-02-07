@@ -1,6 +1,6 @@
+import type { Post } from "@repo/ui/data";
 import { expect, test } from "vitest";
 import { render } from "vitest-browser-react";
-import type { Post } from "../data";
 import { BlogList } from "./List";
 
 export const post1: Post = {

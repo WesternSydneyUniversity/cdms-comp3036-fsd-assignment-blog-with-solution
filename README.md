@@ -59,7 +59,7 @@ Example implementation is in the image below.
 
 > 💡Idea! Create a new issue in your repository, where you can track the completion of these items. Just copy paste them into the issue and mark them as complete as you go. Make sure you copy the source from README.md not the preview text.
 
-#### HOME SCREEN
+#### ADMIN HOME SCREEN
 
 - [ ] Shows Login screen if not logged
 - [ ] Shows List screen if logged
@@ -68,8 +68,9 @@ Example implementation is in the image below.
 - [ ] Authenticate the current client using a hard-coded password
 - [ ] Use a cookie to remember the signed-in state.
 
-#### LIST SCREEN
+#### ADMIN LIST SCREEN
 
+- [ ] Shows both active and inactive posts
 - [ ] Article list is only accessible to logged-in users.
 - [ ] There is a filter screen that allows filtering posts by:
   - [ ] Title or content
@@ -86,7 +87,7 @@ Example implementation is in the image below.
 - [ ] There is a button to create new posts
 - [ ] Clicking on the "Create Post" button takes the user to the CREATE SCREEN
 
-#### CREATE and UPDATE screen
+#### ADMIN CREATE and UPDATE screen
 
 Both create and update screens display the same UI, but the update screen preloads the data into fields.
 
