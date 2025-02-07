@@ -1,5 +1,5 @@
+import type { Post } from "@repo/ui/data";
 import BlogList from "./Blog/List";
-import type { Post } from "./data";
 
 export function Main({ posts }: { posts: Post[] }) {
   return (

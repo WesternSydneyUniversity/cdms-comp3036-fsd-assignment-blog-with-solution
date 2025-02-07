@@ -1,6 +1,6 @@
-import { posts } from "@/components/data";
 import { AppLayout } from "@/components/Layout/AppLayout";
 import { Main } from "@/components/Main";
+import { posts } from "@repo/ui/data";
 
 export default async function Page({
   searchParams,
@@ -10,7 +10,7 @@ export default async function Page({
   const { q } = await searchParams;
   const filteredPosts = posts.filter(
     (post) =>
-      post.title.match(new RegExp(q, "i")) ||
+      (post.active && post.title.match(new RegExp(q, "i"))) ||
       post.content.match(new RegExp(q, "i")),
   );
 

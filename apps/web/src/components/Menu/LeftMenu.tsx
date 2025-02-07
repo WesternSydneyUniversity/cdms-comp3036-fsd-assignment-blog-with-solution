@@ -1,8 +1,8 @@
 import { Cog6ToothIcon } from "@heroicons/react/24/outline";
+import { categories, posts } from "@repo/ui/data";
 import { cx } from "@repo/utils/classes";
 import Image from "next/image";
 import Link from "next/link";
-import { categories, posts } from "../data";
 import { HistoryList } from "./HistoryList";
 import { TagList } from "./TagList";
 

@@ -1,6 +1,6 @@
 import { BlogDetail } from "@/components/Blog/Detail";
-import { posts } from "@/components/data";
 import { AppLayout } from "@/components/Layout/AppLayout";
+import { posts } from "@repo/ui/data";
 
 export default async function Page({
   params,
@@ -9,7 +9,7 @@ export default async function Page({
 }) {
   const { urlId } = await params;
   const filteredPost = posts.find(
-    (post) => post.urlId.toLowerCase() === urlId.toLowerCase(),
+    (post) => post.active && post.urlId.toLowerCase() === urlId.toLowerCase(),
   );
 
   return (
