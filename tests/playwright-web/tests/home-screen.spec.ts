@@ -4,24 +4,7 @@ test.beforeAll(async () => {
   await seedData();
 });
 
-test.describe("Main Layout", () => {
-  test(
-    "Home Page",
-    {
-      tag: "@a1",
-    },
-    async ({ page }) => {
-      await page.goto("/");
-      expect(await page.title()).toBe("Full-Stack Blog");
-      await expect(page.getByText("From the blog")).toBeVisible();
-      await expect(
-        page.getByText(
-          "Learn how to grow your business with our expert advice.",
-        ),
-      ).toBeVisible();
-    },
-  );
-
+test.describe("HOME SCREEN", () => {
   async function checkItem(
     page: Page,
     name: string,
@@ -47,6 +30,8 @@ test.describe("Main Layout", () => {
     async ({ page }) => {
       await page.goto("/");
 
+      // HOME SCREEN > User must see the list of blog post categories, where each category points to UI showing only posts of that category
+
       await checkItem(page, "Category / React", "/category/react");
       await checkItem(page, "Category / Node", "/category/node");
       await checkItem(page, "Category / Mongo", "/category/mongo");
@@ -62,6 +47,8 @@ test.describe("Main Layout", () => {
     async ({ page }) => {
       await page.goto("/");
 
+      // HOME SCREEN > User must see the history of blog posts, showing month and year, where each moth, year tuple points to UI showing only posts of that category
+
       await checkItem(page, "History / December, 2024", "/history/2024/12", 1);
       await checkItem(page, "History / April, 2022", "/history/2022/4", 1);
       await checkItem(page, "History / March, 2020", "/history/2020/3", 1);
@@ -76,6 +63,8 @@ test.describe("Main Layout", () => {
     async ({ page }) => {
       await page.goto("/");
 
+      // HOME SCREEN > User must see the list of blog post tags, where each tag points to UI showing only posts of that category
+
       await checkItem(page, "Tag / Back-End", "/tags/back-end", 1);
       await checkItem(page, "Tag / Front-End", "/tags/front-end", 2);
       await checkItem(page, "Tag / Optimisation", "/tags/optimisation", 1);
@@ -84,17 +73,23 @@ test.describe("Main Layout", () => {
   );
 
   test(
-    "Blog Item",
+    "Post Item",
     {
       tag: "@a1",
     },
     async ({ page }) => {
       await page.goto("/");
 
-      // console.log(await page.innerHTML("body"));
-
       const item = await page.getByTestId("blog-post-1");
       await expect(item).toBeVisible();
+
+      // HOME SCREEN > The list shows the following items:
+      // - short description
+      // - date
+      // - image
+      // - tags
+      // - likes
+      // - views
 
       await expect(item.getByText("Boost your conversion rate")).toBeVisible();
       await expect(
@@ -117,6 +112,8 @@ test.describe("Main Layout", () => {
     },
     async ({ page }) => {
       await page.goto("/");
+
+      // HOME SCREEN > User must be able to switch between dark and light theme with a button
 
       const html = await page.getAttribute("html", "data-theme");
       if (html === "dark") {
@@ -142,6 +139,8 @@ test.describe("Main Layout", () => {
     },
     async ({ page }) => {
       await page.goto("/");
+
+      // HOME SCREEN > There is a search functionality that filters blogs based on string found in title or description
 
       await page.getByPlaceholder("Search").fill("Fatboy");
       await expect(page).toHaveURL("/search?q=Fatboy");

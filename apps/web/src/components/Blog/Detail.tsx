@@ -41,6 +41,7 @@ export async function BlogDetail({ post }: { post: Post }) {
 
           {/* DESCRIPTION */}
           <div
+            data-test-id="content-markdown"
             className="text-secondary text-md/6 mt-5"
             dangerouslySetInnerHTML={{ __html: content }}
           ></div>

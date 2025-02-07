@@ -12,20 +12,47 @@ Example implementation is in the image below.
 
 > 💡Idea! Create a new issue in your repository, where you can track the completion of these items. Just copy paste them into the issue and mark them as complete as you go. Make sure you copy the source from README.md not the preview text.
 
-1. [ ] User must see the list of blog post categories, where each category points to UI showing only posts of that category
-1. [ ] User must see the list of blog post tags, where each tag points to UI showing only posts of that category
-1. [ ] User must see the history of blog posts, showing month and year, where each moth, year tuple points to UI showing only posts of that category
-1. [ ] The list shows the following items:
-   - blog title, pointing to detail page
-   - short description
-   - date
-   - image
-   - tags
-   - likes
-   - views
-1. [ ] Detail page shows the same items as list item, but the short description is replaced by formatted long description
-1. [ ] Detail text is stored as Markdown, which needs to be converted to HTML
-1. [ ] There is a search functionality that filters blogs based on string found in title or description
+### HOME SCREEN
+
+- [ ] User must see the list of blog post categories, where each category points to UI showing only posts of that category
+- [ ] User must see the list of blog post tags, where each tag points to UI showing only posts of that category
+- [ ] User must see the history of blog posts, showing month and year, where each moth, year tuple points to UI showing only posts of that category
+- [ ] The list shows the following items:
+  - blog title, pointing to detail page
+  - short description
+  - date
+  - image
+  - tags
+  - likes
+  - views
+- [ ] User must be able to switch between dark and light theme with a button
+      The dark theme setting is stored in the "data-theme" attribute on html element
+- [ ] There is a search functionality that filters blogs based on string found in title or description, redirecting to search page
+
+### DETAIL SCREEN
+
+- [ ] Detail page shows the same items as list item, but the short description is replaced by formatted long description
+- [ ] Detail text is stored as Markdown, which needs to be converted to HTML
+
+### CATEGORY SCREEN
+
+- [ ] Displays posts from the category from url (e.g. /category/react)
+- [ ] Displays "0 Posts" when search does no posts have that category
+
+### HISTORY SCREEN
+
+- [ ] Displays posts from year and month specified in the url (e.g. /history/2024/12)
+- [ ] Displays "0 Posts" when no posts are from that given month and year
+
+### TAG SCREEN
+
+- [ ] Displays posts with the tag url (e.g. /tags/dev-tools)
+- [ ] Displays "0 Posts" when search does no posts have that tag
+
+### SEARCH SCREEN
+
+- [ ] Displays results based on search string stored in the query string (e.g. /search?q=Fat)
+- [ ] Displays "0 Posts" when search does not find anything
 
 ### Requirements - Assignment 2.2 - Admin
 
@@ -33,45 +60,46 @@ Example implementation is in the image below.
 
 #### HOME SCREEN
 
-1. [ ] Shows Login screen if not logged
+- [ ] Shows Login screen if not logged
+
 2. [ ] Shows List screen if logged
 
 #### LOGIN SCREEN
 
-1. [ ] Authentication can work by just providing a password without a user name since a single user operates this.
-1. [ ] Authenticate the current the client using a hard-coded password and use a cookie to remember the signed-in the state.
+- [ ] Authentication can work by just providing a password without a user name since a single user operates this.
+- [ ] Authenticate the current the client using a hard-coded password and use a cookie to remember the signed-in the state.
 
 #### LIST SCREEN
 
-1. [ ] UI is only accessible to logged-in users.
-1. [ ] On the top is a filter screen that allows to filter posts by:
-   1. [ ] Title or content
-   1. [ ] Tags
-   1. [ ] Date
-   1. [ ] Visibility
-1. [ ] Below the filter, it displays the list of posts
-   1. [ ] The list post item displays the image, title of the post and metadata
-   1. [ ] The metadata are category, tags and "active" status.
-   1. [ ] The active status is a button that on click, just displays a message for now
-1. [ ] Clicking on the title takes the user to the MODIFY SCREEN, allowing user to modify the current post
-1. [ ] Above the post list is a search bar allowing to filter the posts
-1. [ ] Next to the search bar is a button to create new posts
-1. [ ] Clicking on the Create post button takes the user to the
+- [ ] UI is only accessible to logged-in users.
+- [ ] On the top is a filter screen that allows to filter posts by:
+  - [ ] Title or content
+  - [ ] Tags
+  - [ ] Date
+  - [ ] Visibility
+- [ ] Below the filter, it displays the list of posts
+  - [ ] The list post item displays the image, title of the post and metadata
+  - [ ] The metadata are category, tags and "active" status.
+  - [ ] The active status is a button that on click, just displays a message for now
+- [ ] Clicking on the title takes the user to the MODIFY SCREEN, allowing user to modify the current post
+- [ ] Above the post list is a search bar allowing to filter the posts
+- [ ] Next to the search bar is a button to create new posts
+- [ ] Clicking on the Create post button takes the user to the
 
 #### CREATE and UPDATE screen
 
 Both create and update screens display the same UI, but the update screen preloads the data into fields.
 
-1. [ ] There must be the following fields which must be validated for errors:
-   1. [ ] Title (input, string)
-   1. [ ] Description (textarea, string, max 200 characters)
-   1. [ ] Content (textarea, markdown string)
-   1. [ ] Tag List (input, string) shows a comma-separated list of tags.
-   1. [ ] Image URL (input, string)
-1. [ ] Under the Description is a "Preview" button that replaces the text area with a rendered markdown string and changes the title to "Close Preview".
-1. [ ] Under the image input is an image preview.
-1. [ ] When the preview is closed, the cursor must be in the same position as before opening the preview.
-1. [ ] Below the UI is a "Save" button that displays an error ui if one of the fields is not specified or valid.
+- [ ] There must be the following fields which must be validated for errors:
+  - [ ] Title (input, string)
+  - [ ] Description (textarea, string, max 200 characters)
+  - [ ] Content (textarea, markdown string)
+  - [ ] Tag List (input, string) shows a comma-separated list of tags.
+  - [ ] Image URL (input, string)
+- [ ] Under the Description is a "Preview" button that replaces the text area with a rendered markdown string and changes the title to "Close Preview".
+- [ ] Under the image input is an image preview.
+- [ ] When the preview is closed, the cursor must be in the same position as before opening the preview.
+- [ ] Below the UI is a "Save" button that displays an error ui if one of the fields is not specified or valid.
 
 ## Prerequisites
 

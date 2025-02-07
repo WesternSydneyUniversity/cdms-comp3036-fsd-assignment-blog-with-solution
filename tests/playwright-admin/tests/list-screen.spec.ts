@@ -4,7 +4,7 @@ test.beforeAll(async () => {
   await seedData();
 });
 
-test.describe("List Screen", () => {
+test.describe("LIST SCREEN", () => {
   test(
     "Filter by content",
     {
