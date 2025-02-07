@@ -14,6 +14,7 @@ Example implementation is in the image below.
 
 ### HOME SCREEN
 
+- [ ] User must see only the "active" posts
 - [ ] User must see the list of blog post categories, where each category points to UI showing only posts of that category
 - [ ] User must see the list of blog post tags, where each tag points to UI showing only posts of that category
 - [ ] User must see the history of blog posts, showing month and year, where each moth, year tuple points to UI showing only posts of that category
@@ -61,45 +62,45 @@ Example implementation is in the image below.
 #### HOME SCREEN
 
 - [ ] Shows Login screen if not logged
-
-2. [ ] Shows List screen if logged
-
-#### LOGIN SCREEN
-
-- [ ] Authentication can work by just providing a password without a user name since a single user operates this.
-- [ ] Authenticate the current the client using a hard-coded password and use a cookie to remember the signed-in the state.
+- [ ] Shows List screen if logged
+- [ ] There must be a logout button
+- [ ] Clicking the logout button logs the user out
+- [ ] Authenticate the current client using a hard-coded password
+- [ ] Use a cookie to remember the signed-in state.
 
 #### LIST SCREEN
 
-- [ ] UI is only accessible to logged-in users.
-- [ ] On the top is a filter screen that allows to filter posts by:
+- [ ] Article list is only accessible to logged-in users.
+- [ ] There is a filter screen that allows filtering posts by:
   - [ ] Title or content
   - [ ] Tags
   - [ ] Date
   - [ ] Visibility
-- [ ] Below the filter, it displays the list of posts
-  - [ ] The list post item displays the image, title of the post and metadata
-  - [ ] The metadata are category, tags and "active" status.
-  - [ ] The active status is a button that on click, just displays a message for now
-- [ ] Clicking on the title takes the user to the MODIFY SCREEN, allowing user to modify the current post
-- [ ] Above the post list is a search bar allowing to filter the posts
-- [ ] Next to the search bar is a button to create new posts
-- [ ] Clicking on the Create post button takes the user to the
+- [ ] You can combine multiple filters
+- [ ]Users can sort posts by name or creation date, both ascending and descending
+- [ ] The post list displays a list of filtered items with the following information:
+  - [ ] The list post item displays the image, title of the post
+  - [ ] The list post items display metadata such as category, tags, and "active" status.
+  - [ ] The active status is a button that, on click, just displays a message
+- [ ] Clicking on the title takes the user to the MODIFY SCREEN, allowing the user to modify the current post
+- [ ] There is a button to create new posts
+- [ ] Clicking on the "Create Post" button takes the user to the CREATE SCREEN
 
 #### CREATE and UPDATE screen
 
 Both create and update screens display the same UI, but the update screen preloads the data into fields.
 
+- [ ] Page is only accessible to logged in user
 - [ ] There must be the following fields which must be validated for errors:
-  - [ ] Title (input, string)
+  - [ ] Title (`input, string`)
   - [ ] Description (textarea, string, max 200 characters)
-  - [ ] Content (textarea, markdown string)
-  - [ ] Tag List (input, string) shows a comma-separated list of tags.
-  - [ ] Image URL (input, string)
+  - [ ] Content (`textarea, markdown string`)
+  - [ ] Tag List (`input, string`) shows a comma-separated list of tags.
+  - [ ] Image URL (`input, URL`)
 - [ ] Under the Description is a "Preview" button that replaces the text area with a rendered markdown string and changes the title to "Close Preview".
-- [ ] Under the image input is an image preview.
 - [ ] When the preview is closed, the cursor must be in the same position as before opening the preview.
-- [ ] Below the UI is a "Save" button that displays an error ui if one of the fields is not specified or valid.
+- [ ] Under the image input is an image preview.
+- [ ] User can click on the "Save" button that displays an error ui if one of the fields is not specified or valid.
 
 ## Prerequisites
 
