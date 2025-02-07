@@ -16,6 +16,7 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@repo/ui": "workspace:*",
+    "@repo/db": "workspace:*",
     "@repo/utils": "workspace:*",
     "@tailwindcss/postcss": "^4.0.0",
     "marked": "^15.0.6",

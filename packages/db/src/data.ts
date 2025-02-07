@@ -1,17 +1,3 @@
-import {
-  ArchiveBoxIcon,
-  BookmarkIcon,
-  BriefcaseIcon,
-  ServerIcon,
-} from "@heroicons/react/24/outline";
-
-export const categories = [
-  { name: "React", urlId: "react", icon: BookmarkIcon, current: false },
-  { name: "Node", urlId: "node", icon: ServerIcon, current: false },
-  { name: "Mongo", urlId: "mongo", icon: ArchiveBoxIcon, current: false },
-  { name: "DevOps", urlId: "devops", icon: BriefcaseIcon, current: false },
-];
-
 export type Post = {
   id: number;
   urlId: string;
@@ -97,7 +83,7 @@ export const posts: Post[] = [
     category: "React",
     tags: ["Front-End", "Dev Tools"],
     views: 22,
-    likes: 18,
+    likes: 2,
     active: true,
   },
   {
@@ -114,7 +100,7 @@ export const posts: Post[] = [
     category: "React",
     tags: ["Programming", "Mainframes"],
     views: 22,
-    likes: 18,
+    likes: 1,
     active: false,
   },
 ];

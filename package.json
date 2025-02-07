@@ -17,6 +17,8 @@
     "node": ">=18"
   },
   "dependencies": {
-    "prettier-plugin-tailwindcss": "^0.6.11"
+    "@prisma/client": "^6.3.1",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "prisma": "^6.3.1"
   }
 }

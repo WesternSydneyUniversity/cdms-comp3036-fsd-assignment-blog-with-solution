@@ -1,4 +1,4 @@
-import type { Post } from "@repo/ui/data";
+import type { Post } from "@repo/db/data";
 import { expect, test } from "vitest";
 import { render } from "vitest-browser-react";
 import { BlogList } from "./List";

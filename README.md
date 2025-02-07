@@ -8,7 +8,7 @@ Example implementation is in the image below.
 - ✅ All of the tests must be passing
 - ✅ You must be able to explain any code in the codebase
 
-### Requirements - Assignment 2.1 - Client
+## 👾 Requirements - Assignment 2.1 - Client
 
 > 💡Idea! Create a new issue in your repository, where you can track the completion of these items. Just copy paste them into the issue and mark them as complete as you go. Make sure you copy the source from README.md not the preview text.
 
@@ -55,11 +55,11 @@ Example implementation is in the image below.
 - [ ] Displays results based on search string stored in the query string (e.g. /search?q=Fat)
 - [ ] Displays "0 Posts" when search does not find anything
 
-### Requirements - Assignment 2.2 - Admin
+## 👾 Requirements - Assignment 2.2 - Admin
 
 > 💡Idea! Create a new issue in your repository, where you can track the completion of these items. Just copy paste them into the issue and mark them as complete as you go. Make sure you copy the source from README.md not the preview text.
 
-#### ADMIN HOME SCREEN
+### ADMIN HOME SCREEN
 
 - [ ] Shows Login screen if not logged
 - [ ] Shows List screen if logged
@@ -68,7 +68,7 @@ Example implementation is in the image below.
 - [ ] Authenticate the current client using a hard-coded password
 - [ ] Use a cookie to remember the signed-in state.
 
-#### ADMIN LIST SCREEN
+### ADMIN LIST SCREEN
 
 - [ ] Shows both active and inactive posts
 - [ ] Article list is only accessible to logged-in users.
@@ -87,7 +87,7 @@ Example implementation is in the image below.
 - [ ] There is a button to create new posts
 - [ ] Clicking on the "Create Post" button takes the user to the CREATE SCREEN
 
-#### ADMIN CREATE and UPDATE screen
+### ADMIN CREATE and UPDATE screen
 
 Both create and update screens display the same UI, but the update screen preloads the data into fields.
 
@@ -102,6 +102,35 @@ Both create and update screens display the same UI, but the update screen preloa
 - [ ] When the preview is closed, the cursor must be in the same position as before opening the preview.
 - [ ] Under the image input is an image preview.
 - [ ] User can click on the "Save" button that displays an error ui if one of the fields is not specified or valid.
+
+## 👾 Requirements: Assignment 2.3
+
+### BACKEND / CLIENT
+
+- [ ] Data is loaded from the database backend
+- [ ] Data filtering is done server side and only filtered data is sent to client
+- [ ] Each visit of the page increases the post "views" count by one
+- [ ] User can "like" the post on the detail screen, NOT on the list screen
+- [ ] Liking the post increases the like count by one
+- [ ] User can like the post only once (use IP)
+- [ ] User can unlike the post, decreasing the like post by one
+
+### BACKEND / ADMIN / AUTHORISATION
+
+- [ ] The password is checked on server, which issues JWT token
+- [ ] Every request uses authorisation BEARER which is validated server side for all requests
+
+### BACKEND / ADMIN / LIST SCREEN
+
+- [ ] User can activate / deactivate a post clicking on the activate button, automatically saving changes
+
+### BACKEND / ADMIN / UPDATE SCREEN
+
+- [ ] User can save changes to database, if the form is validated
+
+### BACKEND / ADMIN / CREATE SCREEN
+
+- [ ] User can create a new post to the database, if the form is validated
 
 ## Prerequisites
 
@@ -204,6 +233,7 @@ Contains the following packages with shared code and configurations:
 
 - **packages/ui** - Library of UI elements shared between admin and client
 - **packages/utils** - Library of utility functions shared between other projects
+- **packages/db** - Library handling the database connection
 - **packages/eslint-config**, **packages/tailwind-config** and **packages/typescript-config** contain configuration files for build pipelines for this project
 
 **Tests**
