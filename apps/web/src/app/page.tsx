@@ -1,4 +1,4 @@
-import { posts } from "@repo/ui/data";
+import { posts } from "@repo/db/data";
 import { AppLayout } from "../components/Layout/AppLayout";
 import { Main } from "../components/Main";
 

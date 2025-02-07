@@ -1,5 +1,5 @@
 import { HeartIcon } from "@heroicons/react/24/outline";
-import type { Post } from "@repo/ui/data";
+import type { Post } from "@repo/db/data";
 
 export function BlogListItem({ post }: { post: Post }) {
   return (

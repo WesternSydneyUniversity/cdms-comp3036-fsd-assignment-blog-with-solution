@@ -1,4 +1,4 @@
-import type { Post } from "@repo/ui/data";
+import type { Post } from "@repo/db/data";
 import { BlogListItem } from "./ListItem";
 
 export function BlogList({ posts }: { posts: Post[] }) {

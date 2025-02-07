@@ -6,8 +6,8 @@ import {
   ExclamationTriangleIcon,
   EyeIcon,
 } from "@heroicons/react/24/outline";
+import type { Post } from "@repo/db/data";
 import { Button } from "@repo/ui/button";
-import type { Post } from "@repo/ui/data";
 import { marked } from "marked";
 import { useRef, useState } from "react";
 

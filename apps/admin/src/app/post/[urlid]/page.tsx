@@ -2,7 +2,7 @@ import { Header } from "@/components/Header";
 import { AppLayout } from "@/components/Layout/AppLayout";
 import { Content } from "@/components/Layout/Content";
 import { PostForm } from "@/components/Posts/PostForm";
-import { posts } from "@repo/ui/data";
+import { posts } from "@repo/db/data";
 import { type ImageProps } from "next/image";
 
 type Props = Omit<ImageProps, "src"> & {

@@ -1,10 +1,23 @@
-import { Cog6ToothIcon } from "@heroicons/react/24/outline";
-import { categories, posts } from "@repo/ui/data";
+import {
+  ArchiveBoxIcon,
+  BookmarkIcon,
+  BriefcaseIcon,
+  Cog6ToothIcon,
+  ServerIcon,
+} from "@heroicons/react/24/outline";
+import { posts } from "@repo/db/data";
 import { cx } from "@repo/utils/classes";
 import Image from "next/image";
 import Link from "next/link";
 import { HistoryList } from "./HistoryList";
 import { TagList } from "./TagList";
+
+export const categories = [
+  { name: "React", urlId: "react", icon: BookmarkIcon, current: false },
+  { name: "Node", urlId: "node", icon: ServerIcon, current: false },
+  { name: "Mongo", urlId: "mongo", icon: ArchiveBoxIcon, current: false },
+  { name: "DevOps", urlId: "devops", icon: BriefcaseIcon, current: false },
+];
 
 export function LeftMenu() {
   return (

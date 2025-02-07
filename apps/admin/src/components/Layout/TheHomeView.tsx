@@ -1,6 +1,6 @@
 "use client";
 
-import { posts as dbPosts } from "@repo/ui/data";
+import { posts as dbPosts } from "@repo/db/data";
 import { useState } from "react";
 import { Filter } from "../Filter/Filter";
 import { Header } from "../Header";

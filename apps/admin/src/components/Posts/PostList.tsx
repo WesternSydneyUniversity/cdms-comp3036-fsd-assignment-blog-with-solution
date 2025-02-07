@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import type { Post } from "@repo/ui/data";
+import type { Post } from "@repo/db/data";
 import Link from "next/link";
 
 export function PostList({ posts }: { posts: Post[] }) {

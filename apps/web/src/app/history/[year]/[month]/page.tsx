@@ -1,6 +1,6 @@
 import { AppLayout } from "@/components/Layout/AppLayout";
 import { Main } from "@/components/Main";
-import { posts } from "@repo/ui/data";
+import { posts } from "@repo/db/data";
 
 export default async function Page({
   params,
