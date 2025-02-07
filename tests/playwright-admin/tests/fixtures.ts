@@ -9,7 +9,7 @@ export async function seedData(...options: any[]) {}
 
 // Declare the types of your fixtures.
 type MyFixtures = {
-  adminPage: Page;
+  // adminPage: Page;
   userPage: Page;
 };
 
@@ -26,7 +26,7 @@ export async function setOptions(
   await context.addCookies([
     {
       name: "options",
-      url: process.env.ROOT_URL,
+      url: process.env.VERCEL_URL,
       value: createOptions(options),
     },
   ]);
@@ -34,14 +34,14 @@ export async function setOptions(
 
 export * from "@playwright/test";
 export const test = base.extend<MyFixtures>({
-  adminPage: async ({ browser }, use) => {
-    const context = await browser.newContext({
-      storageState: ".auth/admin.json",
-    });
-    const adminPage = await context.newPage(); //  new AdminPage(await context.newPage());
-    await use(adminPage);
-    await context.close();
-  },
+  // adminPage: async ({ browser }, use) => {
+  //   const context = await browser.newContext({
+  //     storageState: ".auth/admin.json",
+  //   });
+  //   const adminPage = await context.newPage(); //  new AdminPage(await context.newPage());
+  //   await use(adminPage);
+  //   await context.close();
+  // },
   userPage: async ({ browser }, use) => {
     const context = await browser.newContext({
       storageState: ".auth/user.json",

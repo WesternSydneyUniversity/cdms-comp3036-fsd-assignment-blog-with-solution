@@ -20,7 +20,7 @@ export async function setOptions(
   await context.addCookies([
     {
       name: "options",
-      url: process.env.ROOT_URL,
+      url: process.env.VERCEL_URL,
       value: createOptions(options),
     },
   ]);

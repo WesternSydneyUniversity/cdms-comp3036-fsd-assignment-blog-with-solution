@@ -11,6 +11,8 @@
   --textHover: theme("colors.gray.700");
   --text-secondary: theme("colors.gray.600");
   --text-secondaryHover: theme("colors.gray.400");
+  --wsu: #a31631;
+  --wsu-light: #853846;
 }
 
 html[data-theme="dark"] {
@@ -31,4 +33,6 @@ html {
   --color-primaryHover: var(--textHover);
   --color-secondary: var(--text-secondary);
   --color-secondaryHover: var(--text-secondaryHover);
+  --color-wsu: var(--wsu);
+  --color-wsu-light: var(--wsu-light);
 }
