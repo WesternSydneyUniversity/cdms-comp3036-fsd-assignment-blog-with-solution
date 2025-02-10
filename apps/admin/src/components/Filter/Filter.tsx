@@ -46,7 +46,7 @@ export function Filter({
     // tags
     if (tag) {
       posts = posts.filter((post) =>
-        post.tags.some((t) => t.match(new RegExp(tag, "i"))),
+        post.tags.split(",").some((t) => t.match(new RegExp(tag, "i"))),
       );
     }
 

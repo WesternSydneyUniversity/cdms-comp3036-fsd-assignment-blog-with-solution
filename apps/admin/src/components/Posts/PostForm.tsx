@@ -3,12 +3,16 @@
 
 import {
   ArrowDownTrayIcon,
+  ArrowLeftCircleIcon,
   ExclamationTriangleIcon,
   EyeIcon,
 } from "@heroicons/react/24/outline";
+import type { Post as PostDAO } from "@prisma/client";
 import type { Post } from "@repo/db/data";
 import { Button } from "@repo/ui/button";
 import { marked } from "marked";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 
 function isValidUrl(url: string): boolean {
@@ -38,10 +42,15 @@ function ErrorView({
 }
 
 export function PostForm({ post }: { post?: Post }) {
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "error" | "success"
+  >("idle");
+
   const [isPreview, showPreview] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const cursorPosition = useRef(0);
   const editorRef = useRef<HTMLTextAreaElement>(null);
+  const router = useRouter();
 
   const [modifyPost, setModifyPost] = useState<Post>(
     post || {
@@ -50,10 +59,10 @@ export function PostForm({ post }: { post?: Post }) {
       category: "",
       date: new Date(),
       description: "",
-      id: Date.now(),
+      id: -1,
       imageUrl: "",
       likes: 0,
-      tags: [],
+      tags: "",
       urlId: "",
       views: 0,
       active: false,
@@ -90,7 +99,34 @@ export function PostForm({ post }: { post?: Post }) {
 
     setErrors(errors);
     if (Object.keys(errors).length === 0) {
-      alert("Saved");
+      const dbPost: PostDAO = {
+        title: modifyPost.title,
+        content: modifyPost.content,
+        category: modifyPost.category,
+        description: modifyPost.description,
+        imageUrl: modifyPost.imageUrl,
+        tags: modifyPost.tags,
+        urlId: modifyPost.urlId,
+        active: !!modifyPost.active,
+        date: modifyPost.date,
+        id: modifyPost.id,
+        views: modifyPost.views,
+      };
+
+      setStatus("loading");
+      fetch("/api/posts", {
+        method: modifyPost.id >= 0 ? "PATCH" : "PUT",
+        body: JSON.stringify(dbPost),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then(() => {
+          setStatus("success");
+        })
+        .catch(() => {
+          setStatus("error");
+        });
     }
   }
 
@@ -240,17 +276,18 @@ export function PostForm({ post }: { post?: Post }) {
         <input
           id="tagsInput"
           type="text"
-          defaultValue={modifyPost.tags.join(", ")}
+          defaultValue={modifyPost.tags.split(",").join(", ")}
           onChange={(e) =>
             setModifyPost({
               ...modifyPost,
               tags:
                 e.target.value.trim() === ""
-                  ? []
+                  ? ""
                   : e.target.value
                       .trim()
                       .split(",")
-                      .map((t) => t.trim()),
+                      .map((t) => t.trim())
+                      .join(","),
             })
           }
           className="focus:border-wsu focus:ring-wsu mt-1 block w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm"
@@ -277,14 +314,37 @@ export function PostForm({ post }: { post?: Post }) {
           Please fix the errors before saving
         </div>
       )}
-      <Button
-        type="submit"
-        onClick={validateAndSubmit}
-        className="bg-wsu flex items-center gap-2 rounded-lg px-4 py-2 text-white"
-      >
-        <ArrowDownTrayIcon width={24} />
-        Save
-      </Button>
+      <div className="flex items-center gap-2">
+        <Button
+          type="submit"
+          onClick={validateAndSubmit}
+          className="bg-wsu flex items-center gap-2 rounded-lg px-4 py-2 text-white"
+        >
+          <ArrowDownTrayIcon width={24} />
+          Save
+        </Button>
+
+        <Link href="/">
+          <Button
+            type="submit"
+            className="bg-wsu flex items-center gap-2 rounded-lg px-4 py-2 text-white"
+          >
+            <ArrowLeftCircleIcon width={24} />
+            Go Home
+          </Button>
+        </Link>
+        {status === "loading" && (
+          <div className="text-secondary">Saving...</div>
+        )}
+        {status === "error" && (
+          <div className="text-red-500">Error saving post</div>
+        )}
+        {status === "success" && (
+          <>
+            <div className="text-green-500">Post updated successfully</div>
+          </>
+        )}
+      </div>
     </form>
   );
 }

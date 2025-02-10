@@ -1,6 +1,6 @@
-import { HeartIcon } from "@heroicons/react/24/outline";
+import type { Post } from "@repo/db/data";
 import { marked } from "marked";
-import type { Post } from "../data";
+import { LikeButton } from "./LikeButton";
 
 export async function BlogDetail({ post }: { post: Post }) {
   const content = await marked.parse(post.content);
@@ -48,7 +48,7 @@ export async function BlogDetail({ post }: { post: Post }) {
 
           {/* TAGS */}
           <div className="mt-5 flex gap-x-2 text-sm">
-            {post.tags.map((tag) => (
+            {post.tags.split(",").map((tag) => (
               <a
                 href={`/?tag=${tag}`}
                 key={tag}
@@ -60,10 +60,11 @@ export async function BlogDetail({ post }: { post: Post }) {
           </div>
         </div>
         <div className="border-primary/10 text-secondary relative mt-4 flex items-center justify-between gap-x-4 border-t pt-4 text-sm">
+          {/* VIEWS */}
           <div>{post.views} views</div>
-          <div className="flex items-center gap-x-1">
-            <HeartIcon color="red" width={20} /> {post.likes} likes
-          </div>
+
+          {/* LIKES */}
+          <LikeButton post={post} />
         </div>
       </div>
     </article>

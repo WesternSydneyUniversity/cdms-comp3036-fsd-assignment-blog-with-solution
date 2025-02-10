@@ -10,16 +10,18 @@ export function Header() {
         <Image alt="wsu logo" src="/wsulogo.png" width={64} height={64} />{" "}
         <span>Admin of Full Stack Blog</span>
       </Link>
-        <Button
-          onClick={() => {
-            document.cookie =
-              "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      <Button
+        onClick={() => {
+          fetch("/api/auth", {
+            method: "DELETE",
+          }).then(() => {
             window.location.reload();
-          }}
-          className="ml-auto"
-        >
-          Logout
-        </Button>
+          });
+        }}
+        className="ml-auto"
+      >
+        Logout
+      </Button>
     </div>
   );
 }

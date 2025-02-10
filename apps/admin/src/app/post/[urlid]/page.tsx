@@ -2,7 +2,7 @@ import { Header } from "@/components/Header";
 import { AppLayout } from "@/components/Layout/AppLayout";
 import { Content } from "@/components/Layout/Content";
 import { PostForm } from "@/components/Posts/PostForm";
-import { posts } from "@repo/db/data";
+import { client } from "@repo/db/client";
 import { type ImageProps } from "next/image";
 
 type Props = Omit<ImageProps, "src"> & {
@@ -17,7 +17,11 @@ export default async function Page({
 }) {
   const { urlid } = await params;
 
-  const post = posts.find((post) => post.urlId === urlid);
+  // ASSIGNMENT 2
+  // const post = posts.find((post) => post.urlId === urlid);
+
+  // ASSIGNMENT 3
+  const post = await client.post({ where: { urlId: urlid } });
 
   return (
     <AppLayout>

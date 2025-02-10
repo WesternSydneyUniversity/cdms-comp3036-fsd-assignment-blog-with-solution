@@ -1,16 +1,13 @@
-import { AppLayout } from "@/components/Layout/AppLayout";
 import { TheHomeView } from "@/components/Layout/TheHomeView";
-import { type ImageProps } from "next/image";
+import { isLoggedIn } from "@/utils/auth";
+import { client } from "@repo/db/client";
+import { LoginScreen } from "@repo/ui/login";
 
-type Props = Omit<ImageProps, "src"> & {
-  srcLight: string;
-  srcDark: string;
-};
+export default async function Home() {
+  if (!(await isLoggedIn())) {
+    return <LoginScreen />;
+  }
 
-export default function Home() {
-  return (
-    <AppLayout>
-      <TheHomeView />
-    </AppLayout>
-  );
+  const posts = await client.posts({});
+  return <TheHomeView posts={posts} />;
 }

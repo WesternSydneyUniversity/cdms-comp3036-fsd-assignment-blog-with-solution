@@ -1,6 +1,6 @@
+import { type Post } from "@repo/db/data";
 import { toUrlPath } from "@repo/utils/url";
 import { tags } from "../../functions/tags";
-import { type Post } from "../data";
 import { LinkList } from "./LinkList";
 import { SummaryItem } from "./SummaryItem";
 

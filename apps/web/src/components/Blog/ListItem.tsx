@@ -42,7 +42,7 @@ export function BlogListItem({ post }: { post: Post }) {
 
           {/* TAGS */}
           <div className="mt-5 flex gap-x-2 text-sm">
-            {post.tags.map((tag) => (
+            {post.tags.split(",").map((tag) => (
               <a
                 href={`/?tag=${tag}`}
                 key={tag}

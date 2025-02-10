@@ -31,11 +31,33 @@ export function LoginScreen() {
               const data = Object.fromEntries(formData.entries());
               if (data.password === "") {
                 setMessage("Password cannot be empty");
-              } else if (data.password !== "123") {
-                setMessage("Password is incorrect");
-              } else {
-                document.cookie = `password=${data.password}; path=/`;
-                window.location.reload();
+              }
+              // ASSIGNMENT 2
+
+              // else if (data.password !== "123") {
+              //   setMessage("Password is incorrect");
+              // } else {
+              //   document.cookie = `password=${data.password}; path=/`;
+              //   window.location.reload();
+              // }
+
+              // ASSIGNMENT 3
+              else {
+                fetch("/api/auth", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(data),
+                }).then((res) => {
+                  res.json().then((data) => {
+                    if (res.status === 401) {
+                      setMessage(data.message);
+                    } else {
+                      window.location.reload();
+                    }
+                  });
+                });
               }
             }}
           >

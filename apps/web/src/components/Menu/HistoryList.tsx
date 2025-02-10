@@ -1,5 +1,5 @@
+import { type Post } from "@repo/db/data";
 import { history } from "../../functions/history";
-import { type Post } from "../data";
 import { LinkList } from "./LinkList";
 import { SummaryItem } from "./SummaryItem";
 
