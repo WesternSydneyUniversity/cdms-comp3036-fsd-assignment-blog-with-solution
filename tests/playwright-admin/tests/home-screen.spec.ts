@@ -1,7 +1,8 @@
-import { expect, seedData, test } from "./fixtures";
+import { seed } from "@repo/db/seed";
+import { expect, test } from "./fixtures";
 
 test.beforeAll(async () => {
-  await seedData();
+  await seed();
 });
 
 test.describe("ADMIN HOME SCREEN", () => {
@@ -38,7 +39,7 @@ test.describe("ADMIN HOME SCREEN", () => {
       // HOME SCREEN > Use a cookie to remember the signed-in state.
       const cookies = await page.context().cookies();
       const passwordCookie = cookies.find(
-        (cookie) => cookie.name === "password" && cookie.value === "123",
+        (cookie) => cookie.name === "auth_token",
       );
       expect(passwordCookie).toBeDefined();
 

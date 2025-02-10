@@ -18,6 +18,7 @@ Example implementation is in the image below.
 - [ ] User must see the list of blog post categories, where each category points to UI showing only posts of that category
 - [ ] User must see the list of blog post tags, where each tag points to UI showing only posts of that category
 - [ ] User must see the history of blog posts, showing month and year, where each moth, year tuple points to UI showing only posts of that category
+- [ ] Tags and history items shown are only considered from active posts
 - [ ] The list shows the following items:
   - blog title, pointing to detail page
   - short description
@@ -66,7 +67,7 @@ Example implementation is in the image below.
 - [ ] There must be a logout button
 - [ ] Clicking the logout button logs the user out
 - [ ] Authenticate the current client using a hard-coded password
-- [ ] Use a cookie to remember the signed-in state.
+- [ ] Use a httpOnly cookie and name it "auth_token" to remember the signed-in state.
 
 ### ADMIN LIST SCREEN
 
@@ -78,7 +79,7 @@ Example implementation is in the image below.
   - [ ] Date
   - [ ] Visibility
 - [ ] You can combine multiple filters
-- [ ]Users can sort posts by name or creation date, both ascending and descending
+- [ ] Users can sort posts by name or creation date, both ascending and descending
 - [ ] The post list displays a list of filtered items with the following information:
   - [ ] The list post item displays the image, title of the post
   - [ ] The list post items display metadata such as category, tags, and "active" status.
@@ -110,27 +111,31 @@ Both create and update screens display the same UI, but the update screen preloa
 - [ ] Data is loaded from the database backend
 - [ ] Data filtering is done server side and only filtered data is sent to client
 - [ ] Each visit of the page increases the post "views" count by one
-- [ ] User can "like" the post on the detail screen, NOT on the list screen
+- [ ] User can "like" the post on the detail screen, NOT on the list screen (hint, create the `/api/likes/route.ts` route and implement the needed handlers)
 - [ ] Liking the post increases the like count by one
 - [ ] User can like the post only once (use IP)
 - [ ] User can unlike the post, decreasing the like post by one
 
 ### BACKEND / ADMIN / AUTHORISATION
 
-- [ ] The password is checked on server, which issues JWT token
-- [ ] Every request uses authorisation BEARER which is validated server side for all requests
+> For these two requirements we do not have End 2 End tests and will be checked manually.
+
+- [ ] The password is checked on server in the `/api/auth` route
+- [ ] The POST method is used for login
+- [ ] The DELETE method is used for logout
+- [ ] The admin home page checks for the presence of JWT token and verifies it, if the token does not exist or is invalid, displays the login control.
 
 ### BACKEND / ADMIN / LIST SCREEN
 
-- [ ] User can activate / deactivate a post clicking on the activate button, automatically saving changes
+- [ ] Logged in user can activate / deactivate a post clicking on the activate button, automatically saving changes
 
 ### BACKEND / ADMIN / UPDATE SCREEN
 
-- [ ] User can save changes to database, if the form is validated
+- [ ] Logged in user can save changes to database, if the form is validated
 
 ### BACKEND / ADMIN / CREATE SCREEN
 
-- [ ] User can create a new post to the database, if the form is validated
+- [ ] Logged in user can create a new post to the database, if the form is validated
 
 ## Prerequisites
 
@@ -155,6 +160,10 @@ To run end to end tests you need to install headless browsers. Please run the fo
 ```
 pnpx playwright install
 ```
+
+## Environment
+
+In all app / tests and packages find `.env.example` files and copy them to `.env`. Set your environment variables accordingly!
 
 ## Running the project
 

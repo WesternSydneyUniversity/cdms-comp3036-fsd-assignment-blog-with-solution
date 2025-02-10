@@ -7,7 +7,15 @@ test("returns empty array if no posts are provides", async () => {
 
 test("returns tags with count", async () => {
   await expect(
-    await tags([{ tags: ["A", "B"] }, { tags: ["A", "C"] }, { tags: ["C"] }]),
+    await tags([
+      { tags: "A,B", active: true },
+      { tags: "A,C", active: true },
+      { tags: "C", active: true },
+      {
+        tags: "D",
+        active: false,
+      },
+    ]),
   ).toEqual([
     { name: "A", count: 2 },
     { name: "B", count: 1 },

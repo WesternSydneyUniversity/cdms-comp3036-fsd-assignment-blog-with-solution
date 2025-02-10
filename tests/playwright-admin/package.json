@@ -7,10 +7,10 @@
     "start:e2e": "cross-env E2E=yes next start",
     "start:admin": "pnpm --filter admin start:e2e",
     "test-2": "pnpm playwright test --grep \"@a2\"",
-    "test-3": "pnpm playwright test --grep \"@a2\"",
+    "test-3": "pnpm playwright test --grep \"@a3\"",
     "dev:test": "pnpm playwright test --ui",
     "dev:test-2": "pnpm playwright test --ui --grep \"@a2\"",
-    "dev:test-3": "pnpm playwright test --ui --grep \"@a2\"",
+    "dev:test-3": "pnpm playwright test --ui --grep \"@a3\"",
     "ui": "pnpm playwright test --ui"
   },
   "keywords": [],
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@playwright/test": "^1.50.0",
+    "@repo/db": "workspace:*",
     "dotenv": "^16.4.5"
   }
 }

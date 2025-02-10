@@ -6,7 +6,7 @@ import { BlogList } from "./List";
 export const post1: Post = {
   title: "Hello, World!",
   date: new Date("01 Oct 2024"),
-  tags: ["Hello", "World"],
+  tags: "Hello,World",
   category: "Cat",
   content: "Content of Hello World",
   description: "Description of Hello World",
@@ -20,7 +20,7 @@ export const post1: Post = {
 export const post2: Post = {
   title: "Hola, Mundo!",
   date: new Date("01 May 2022"),
-  tags: ["Hola", "Mundo"],
+  tags: "Hola,Mundo",
   category: "Kat",
   content: "Contento del Hola Mundo",
   description: "Descripcion de Hola Mundo",

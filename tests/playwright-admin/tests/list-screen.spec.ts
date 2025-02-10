@@ -1,10 +1,15 @@
-import { expect, seedData, test } from "./fixtures";
+import { seed } from "@repo/db/seed";
+import { expect, test } from "./fixtures";
 
 test.beforeAll(async () => {
-  await seedData();
+  await seed();
 });
 
 test.describe("ADMIN LIST SCREEN", () => {
+  test.beforeAll(async () => {
+    await seed();
+  });
+
   test(
     "Show all posts",
     {
@@ -242,6 +247,47 @@ test.describe("ADMIN LIST SCREEN", () => {
       // LIST SCREEN > Clicking on the "Create Post" button takes the user to the CREATE SCREEN
       await userPage.locator('a:has-text("Create Post")').click();
       await expect(userPage).toHaveURL("/posts/create");
+    },
+  );
+
+  test(
+    "Can activate / deactivate posts",
+    {
+      tag: "@a3",
+    },
+    async ({ userPage }) => {
+      await seed();
+      await userPage.goto("/");
+
+      //  BACKEND / ADMIN / LIST SCREEN > Logged in user can activate / deactivate a post clicking on the activate button, automatically saving changes
+
+      let article = await userPage.locator("article").first();
+      await expect(article.locator('button:has-text("Active")')).toBeVisible();
+      await expect(
+        article.locator('button:has-text("Inactive")'),
+      ).not.toBeVisible();
+
+      await article.locator('button:has-text("Active")').click();
+
+      article = await userPage.locator("article").first();
+      await expect(
+        article.getByText("Active", { exact: true }),
+      ).not.toBeVisible();
+      await expect(
+        article.getByText("Inactive", { exact: true }),
+      ).toBeVisible();
+
+      // reload page and check
+
+      await userPage.reload();
+
+      article = await userPage.locator("article").first();
+      await expect(
+        article.getByText("Active", { exact: true }),
+      ).not.toBeVisible();
+      await expect(
+        article.getByText("Inactive", { exact: true }),
+      ).toBeVisible();
     },
   );
 });

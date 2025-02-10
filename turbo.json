@@ -1,7 +1,14 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
-  "globalEnv": ["PASSWORD"],
+  "globalEnv": [
+    "PASSWORD",
+    "VITEST",
+    "E2E",
+    "TEST_DATABASE_URL",
+    "DATABASE_URL",
+    "JWT_SECRET"
+  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],

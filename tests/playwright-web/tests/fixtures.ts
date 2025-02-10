@@ -1,7 +1,6 @@
 import "dotenv/config";
 
 import { type BrowserContext } from "@playwright/test";
-
 // TODO: Implement seed
 export async function seedData(...options: any[]) {
   /* After assignment two, move the hard coded data to the seed */

@@ -1,7 +1,8 @@
-import { expect, seedData, test, type Page } from "./fixtures";
+import { seed } from "@repo/db/seed";
+import { expect, test, type Page } from "./fixtures";
 
 test.beforeAll(async () => {
-  await seedData();
+  await seed();
 });
 
 test.describe("HOME SCREEN", () => {
@@ -64,6 +65,10 @@ test.describe("HOME SCREEN", () => {
       await checkItem(page, "History / December, 2024", "/history/2024/12", 1);
       await checkItem(page, "History / April, 2022", "/history/2022/4", 1);
       await checkItem(page, "History / March, 2020", "/history/2020/3", 1);
+
+      // HOME SCREEN > Tags and history items shown are only considered from active posts
+
+      await expect(page.getByText("December, 2012")).not.toBeVisible();
     },
   );
 
@@ -81,6 +86,10 @@ test.describe("HOME SCREEN", () => {
       await checkItem(page, "Tag / Front-End", "/tags/front-end", 2);
       await checkItem(page, "Tag / Optimisation", "/tags/optimisation", 1);
       await checkItem(page, "Tag / Dev Tools", "/tags/dev-tools", 1);
+
+      // HOME SCREEN > Tags and history items shown are only considered from active posts
+
+      await expect(page.getByText("Mainframes")).not.toBeVisible();
     },
   );
 

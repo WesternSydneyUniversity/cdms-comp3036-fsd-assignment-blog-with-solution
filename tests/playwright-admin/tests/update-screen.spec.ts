@@ -1,7 +1,8 @@
-import { expect, seedData, test } from "./fixtures";
+import { seed } from "@repo/db/seed";
+import { expect, test } from "./fixtures";
 
-test.beforeAll(async () => {
-  await seedData();
+test.beforeEach(async () => {
+  await seed();
 });
 
 test.describe("ADMIN UPDATE SCREEN", () => {
@@ -115,6 +116,85 @@ test.describe("ADMIN UPDATE SCREEN", () => {
       await expect(
         userPage.getByText("At least one tag is required"),
       ).not.toBeVisible();
+    },
+  );
+
+  test(
+    "Save post form",
+    {
+      tag: "@a3",
+    },
+    async ({ userPage }) => {
+      await seed();
+      await userPage.goto("/post/no-front-end-framework-is-the-best");
+
+      // BACKEND / ADMIN / UPDATE SCREEN > Logged in user can save changes to database, if the form is validated
+
+      await userPage.getByLabel("Title").fill("New title");
+      await userPage.getByLabel("Description").fill("New Description");
+      await userPage.getByLabel("Content").fill("New Content");
+      await userPage
+        .getByLabel("Image URL")
+        .fill("http://example.com/image.jpg");
+      await userPage.getByLabel("Tags").fill("Tag");
+      await userPage.getByText("Save").click();
+
+      await expect(
+        userPage.getByText("Post updated successfully"),
+      ).toBeVisible();
+
+      // check if the changes are there
+      await userPage.goto("/");
+
+      const article = await userPage.locator("article").first();
+      await expect(article.getByText("New title")).toBeVisible();
+      await expect(article.getByText("Tag")).toBeVisible();
+      await expect(article.locator("img")).toHaveAttribute(
+        "src",
+        "http://example.com/image.jpg",
+      );
+    },
+  );
+
+  test(
+    "Create post form",
+    {
+      tag: "@a3",
+    },
+    async ({ userPage }) => {
+      await seed();
+      await userPage.goto("/posts/create");
+
+      // BACKEND / ADMIN / UPDATE SCREEN > Logged in user can create a new post to the database, if the form is validated
+
+      await userPage.getByLabel("Title").fill("New title");
+      await userPage.getByLabel("Category").fill("React");
+      await userPage.getByLabel("Description").fill("New Description");
+      await userPage.getByLabel("Content").fill("New Content");
+      await userPage
+        .getByLabel("Image URL")
+        .fill("http://example.com/image.jpg");
+      await userPage.getByLabel("Tags").fill("Tag");
+      await userPage.getByText("Save").click();
+
+      await expect(
+        userPage.getByText("Post updated successfully"),
+      ).toBeVisible();
+
+      // check if the changes are there
+      await userPage.goto("/");
+
+      const article = await userPage.locator("article").first();
+      await expect(article.getByText("New title")).toBeVisible();
+      await expect(article.locator('a:has-text("New title")')).toHaveAttribute(
+        "href",
+        "/post/new-title",
+      );
+      await expect(article.getByText("Tag")).toBeVisible();
+      await expect(article.locator("img")).toHaveAttribute(
+        "src",
+        "http://example.com/image.jpg",
+      );
     },
   );
 
