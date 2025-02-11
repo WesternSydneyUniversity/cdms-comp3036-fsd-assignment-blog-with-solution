@@ -1,3 +1,4 @@
+import { env } from "@repo/env";
 import jwt from "jsonwebtoken";
 import { NextResponse, type NextRequest } from "next/server";
 
@@ -27,13 +28,13 @@ export async function POST(req: NextRequest) {
   //       if passwords match, create a JWT token and set it in cookies
 
   const { password } = await req.json();
-  const { PASSWORD, JWT_SECRET } = process.env;
+  const { PASSWORD, JWT_SECRET } = env;
 
   if (PASSWORD == null || JWT_SECRET == null) {
     throw new Error("Missing configuration variables");
   }
 
-  if (password === process.env.PASSWORD) {
+  if (password === PASSWORD) {
     const token = jwt.sign(
       {
         user: "admin",

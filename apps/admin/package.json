@@ -16,6 +16,7 @@
     "@repo/db": "workspace:*",
     "@repo/ui": "workspace:*",
     "@repo/utils": "workspace:*",
+    "@repo/env": "workspace:*",
     "jsonwebtoken": "^9.0.2",
     "marked": "^15.0.6",
     "next": "^15.1.6",

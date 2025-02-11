@@ -1,4 +1,5 @@
 import { Prisma, PrismaClient } from "@prisma/client";
+import { env } from "@repo/env";
 
 declare global {
   // eslint-disable-next-line no-var
@@ -10,10 +11,7 @@ export const createClient = () => {
     return global.prisma;
   }
 
-  const URL =
-    process.env.VITEST || process.env.E2E
-      ? process.env.TEST_DATABASE_URL
-      : process.env.DATABASE_URL;
+  const URL = env.DATABASE_URL;
 
   const prisma = new PrismaClient({
     datasourceUrl: URL,
