@@ -81,6 +81,7 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: process.env.CI
     ? {
+        reuseExistingServer: true,
         command: "pnpm start:admin",
         url: "http://localhost:3002",
         // reuseExistingServer: !process.env.CI,

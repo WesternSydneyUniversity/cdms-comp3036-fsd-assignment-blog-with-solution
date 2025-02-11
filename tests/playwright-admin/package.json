@@ -3,8 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "next start",
-    "start:e2e": "cross-env E2E=yes next start",
     "start:admin": "pnpm --filter admin start:e2e",
     "test-2": "pnpm playwright test --grep \"@a2\"",
     "test-3": "pnpm playwright test --grep \"@a3\"",

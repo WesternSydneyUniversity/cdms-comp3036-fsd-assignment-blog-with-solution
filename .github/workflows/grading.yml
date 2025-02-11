@@ -13,10 +13,13 @@ jobs:
       # in GitHub repo → Settings → Secrets → Actions
       E2E: true
       CI: true
+      DATABASE_URL: file:./dev.db
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PASSWORD: 123
+      JWT_SECRET: secret
       # NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
       # NEXTAUTH_URL: http://127.0.0.1:3001/
-      VERCEL_URL: http://127.0.0.1:3001/
+      # VERCEL_URL: http://127.0.0.1:3001/
       #TURBO_TOKEN: ${{secrets.TURBO_TOKEN}}
       #TURBO_TEAM: team_FXFYQlL6HSM7CAamFdBZ5A6x
       SKIP_ENV_VALIDATION: true
@@ -41,6 +44,8 @@ jobs:
       - name: Install Playwright Browsers
         working-directory: tests/playwright-web
         run: pnpm playwright install chromium --with-deps
+      - name: Push Database 📦
+        run: pnpm --filter @repo/db db:push
       - name: Build the project 🏗
         run: pnpm turbo build
 
@@ -50,44 +55,48 @@ jobs:
 
       - name: Test - Utils
         id: testUtils
-        uses: education/autograding-command-grader@v1
+        uses: WesternSydneyUniversity/autograding-command-grader@v2
         continue-on-error: true
         with:
+          working-directory: packages/utils
           test-name: Unit 1 - Utils
-          command: cd packages/utils && CI=true pnpm test
+          command: pnpm test
           timeout: 10
           max-score: 1
 
       - name: Test - Ui
         id: testUi
-        uses: education/autograding-command-grader@v1
+        uses: WesternSydneyUniversity/autograding-command-grader@v2
         continue-on-error: true
         with:
+          working-directory: packages/ui
           test-name: Unit 2 - UI
-          command: cd packages/ui && CI=true pnpm test -- --browser.headless
+          command: pnpm test
           timeout: 10
           max-score: 1
 
       - name: Test - Web
         id: testWeb
-        uses: education/autograding-command-grader@v1
+        uses: WesternSydneyUniversity/autograding-command-grader@v2
         continue-on-error: true
         with:
+          working-directory: apps/web
           test-name: Unit 3 - Web Components
-          command: cd apps/web && CI=true pnpm test -- --browser.headless
+          command: pnpm test
           timeout: 10
           max-score: 1
 
       ####################
       # ASSIGNMENT 2.1
       ####################
-      - name: Test Assignment 1 with Vitest
+      - name: Test Assignment 1 with Playwright
         id: npm1
-        uses: education/autograding-command-grader@v1
+        uses: WesternSydneyUniversity/autograding-command-grader@v2
         continue-on-error: true
         with:
+          working-directory: .
           test-name: Part 1 - Client
-          command: cd tests/playwright-web && CI=true pnpm playwright test --grep @a1
+          command: pnpm turbo test-1
           timeout: 10
           max-score: 1
       - name: Report Assignment 1 to SkillPies
@@ -102,15 +111,14 @@ jobs:
       ####################
       # ASSIGNMENT 2.2
       ####################
-      - name: Test Assignment 2 with Vitest
+      - name: Test Assignment 2 with Playwright
         id: npm2
-        uses: education/autograding-command-grader@v1
-        env:
-          CI: 1
+        uses: WesternSydneyUniversity/autograding-command-grader@v2
         continue-on-error: true
         with:
+          working-directory: .
           test-name: Part 2 - Admin
-          command: cd tests/playwright-web && CI=true pnpm playwright test --grep @a2
+          command: pnpm turbo test-2
           timeout: 10
           max-score: 1
 
@@ -126,13 +134,14 @@ jobs:
       ####################
       # ASSIGNMENT 2.3
       ####################
-      - name: Test Assignment 3 with Vitest
+      - name: Test Assignment 3 with Playwright
         id: npm3
-        uses: education/autograding-command-grader@v1
+        uses: WesternSydneyUniversity/autograding-command-grader@v2
         continue-on-error: true
         with:
+          working-directory: .
           test-name: Part 3 - Backend
-          command: cd tests/playwright-web && CI=true pnpm playwright test --grep @a3
+          command: pnpm turbo test-3
           timeout: 10
           max-score: 1
 

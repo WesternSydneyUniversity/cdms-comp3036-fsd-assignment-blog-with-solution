@@ -75,9 +75,7 @@ setup(
     // Authentication for Assignment 3
     ////////////////////////////////////////
 
-    const apiContext = await playwright.request.newContext({
-      baseURL: process.env.ROOT_URL,
-    });
+    const apiContext = await playwright.request.newContext();
 
     await apiContext.post("/api/auth", {
       data: JSON.stringify({ password: "123" }),
