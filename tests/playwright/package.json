@@ -1,12 +1,15 @@
 {
-  "name": "@repo/playwright-admin",
+  "name": "@repo/playwright",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start:web": "pnpm --filter web start:e2e",
     "start:admin": "pnpm --filter admin start:e2e",
+    "test-1": "pnpm playwright test --grep \"@a1\"",
     "test-2": "pnpm playwright test --grep \"@a2\"",
     "test-3": "pnpm playwright test --grep \"@a3\"",
     "dev:test": "pnpm playwright test --ui",
+    "dev:test-1": "pnpm playwright test --ui --grep \"@a1\"",
     "dev:test-2": "pnpm playwright test --ui --grep \"@a2\"",
     "dev:test-3": "pnpm playwright test --ui --grep \"@a3\"",
     "ui": "pnpm playwright test --ui"

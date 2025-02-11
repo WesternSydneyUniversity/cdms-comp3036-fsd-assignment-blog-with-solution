@@ -41,7 +41,20 @@ export default defineConfig({
     { name: "setup", testMatch: /.*\.setup\.ts/ },
     {
       name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
+      testDir: "./tests/admin",
+      use: {
+        ...devices["Desktop Chrome"],
+        baseURL: "http://localhost:3002",
+      },
+      dependencies: process.env.CI ? ["setup"] : [],
+    },
+    {
+      name: "chromium",
+      testDir: "./tests/web",
+      use: {
+        ...devices["Desktop Chrome"],
+        baseURL: "http://localhost:3001",
+      },
       dependencies: process.env.CI ? ["setup"] : [],
     },
 
@@ -80,11 +93,19 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: process.env.CI
-    ? {
-        reuseExistingServer: true,
-        command: "pnpm start:admin",
-        url: "http://localhost:3002",
-        // reuseExistingServer: !process.env.CI,
-      }
+    ? [
+        {
+          reuseExistingServer: true,
+          command: "pnpm start:admin",
+          url: "http://localhost:3002",
+          // reuseExistingServer: !process.env.CI,
+        },
+        {
+          reuseExistingServer: true,
+          command: "pnpm start:web",
+          url: "http://localhost:3001",
+          // reuseExistingServer: !process.env.CI,
+        },
+      ]
     : undefined,
 });

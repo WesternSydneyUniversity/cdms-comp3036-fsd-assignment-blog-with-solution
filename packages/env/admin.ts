@@ -1,19 +1,12 @@
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
-// declare global {
-//   const process: {
-//     env: any;
-//   };
-// }
-
 export const env = createEnv({
   /**
    * Specify your server-side environment variables schema here. This way you can ensure the app
    * isn't built with invalid env vars.
    */
   server: {
-    DATABASE_URL: z.string().url(),
     PASSWORD: z.string(),
     JWT_SECRET: z.string(),
   },
@@ -33,7 +26,6 @@ export const env = createEnv({
    */
   runtimeEnv: {
     // E2E: process.env.E2E,
-    DATABASE_URL: process.env.DATABASE_URL,
     PASSWORD: process.env.PASSWORD,
     JWT_SECRET: process.env.JWT_SECRET,
   },

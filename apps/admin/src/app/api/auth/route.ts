@@ -1,4 +1,4 @@
-import { env } from "@repo/env";
+import { env } from "@repo/env/admin";
 import jwt from "jsonwebtoken";
 import { NextResponse, type NextRequest } from "next/server";
 

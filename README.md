@@ -104,6 +104,15 @@ Both create and update screens display the same UI, but the update screen preloa
 - [ ] Under the image input is an image preview.
 - [ ] User can click on the "Save" button that displays an error ui if one of the fields is not specified or valid.
 
+### BONUS
+
+If you are up for a challenge, also complete these requirements:
+
+- [ ] Both client and admin have the same look
+- [ ] In admin you can also filter by category, date and tags and this is preserved in url
+
+> This will require to share the UI through @repo/ui package
+
 ## 👾 Requirements: Assignment 2.3
 
 ### BACKEND / CLIENT
@@ -163,7 +172,7 @@ pnpx playwright install
 
 ## Environment
 
-In all app / tests and packages find `.env.example` files and copy them to `.env`. Set your environment variables accordingly!
+In all packages `apps/admin` and `packages/db` find `.env.example` files and copy them to `.env`. Set your environment variables accordingly!
 
 ## Running the project
 

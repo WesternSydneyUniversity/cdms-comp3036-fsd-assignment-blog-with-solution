@@ -1,9 +1,4 @@
 import { test as setup } from "@playwright/test";
-import { seedData } from "./fixtures";
-
-setup.beforeAll(async () => {
-  await seedData();
-});
 
 // setup(
 //   "authenticate assignment 2",
